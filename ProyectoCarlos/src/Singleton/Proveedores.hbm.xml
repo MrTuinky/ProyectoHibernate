@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16-nov-2018 19:56:38 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Singleton.Proveedores" table="PROVEEDORES" catalog="scotchbox">
+        <id name="codigo" type="string">
+            <column name="CODIGO" length="6" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="20" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="APELLIDOS" length="30" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="40" not-null="true" />
+        </property>
+        <set name="gestions" table="GESTION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODPROVEEDOR" length="6" not-null="true" />
+            </key>
+            <one-to-many class="Singleton.Gestion" />
+        </set>
+    </class>
+</hibernate-mapping>

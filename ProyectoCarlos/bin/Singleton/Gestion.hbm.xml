@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16-nov-2018 19:56:38 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Singleton.Gestion" table="GESTION" catalog="scotchbox">
+        <composite-id name="id" class="Singleton.GestionId">
+            <key-property name="codproveedor" type="string">
+                <column name="CODPROVEEDOR" length="6" />
+            </key-property>
+            <key-property name="codpieza" type="string">
+                <column name="CODPIEZA" length="6" />
+            </key-property>
+            <key-property name="codproyecto" type="string">
+                <column name="CODPROYECTO" length="6" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="piezas" class="Singleton.Piezas" update="false" insert="false" fetch="select">
+            <column name="CODPIEZA" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="proveedores" class="Singleton.Proveedores" update="false" insert="false" fetch="select">
+            <column name="CODPROVEEDOR" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="proyectos" class="Singleton.Proyectos" update="false" insert="false" fetch="select">
+            <column name="CODPROYECTO" length="6" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="java.lang.Float">
+            <column name="CANTIDAD" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
